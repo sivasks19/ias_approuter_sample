@@ -1,0 +1,13 @@
+---
+applications:
+  - name: ias-approuter-sample
+    path: .
+    memory: 256M
+    disk_quota: 256M
+    random-route: true
+    buildpacks:
+      - nodejs_buildpack
+    services:
+      - name: ias-approuter-identity
+        parameters:
+          credential-type: X509_GENERATED

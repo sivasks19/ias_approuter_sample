@@ -1,0 +1,10 @@
+{
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.*.hana.ondemand.com/login/callback?authType=ias"
+    ],
+    "post-logout-redirect-uris": [
+      "https://*.cfapps.*.hana.ondemand.com/logged-out.html"
+    ]
+  }
+}

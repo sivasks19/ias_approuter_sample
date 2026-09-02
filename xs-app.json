@@ -1,0 +1,27 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/logout",
+    "logoutPage": "/logged-out.html"
+  },
+  "routes": [
+    {
+      "source": "^/logged-out.html$",
+      "localDir": "resources",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/user-api(.*)$",
+      "target": "$1",
+      "service": "sap-approuter-userapi",
+      "authenticationType": "ias"
+    },
+    {
+      "source": "^(.*)$",
+      "localDir": "resources",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "authenticationType": "ias"
+    }
+  ]
+}

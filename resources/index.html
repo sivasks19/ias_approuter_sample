@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IAS App Router Sample</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        line-height: 1.5;
+      }
+
+      pre {
+        background: #f5f5f5;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SAP IAS App Router Sample</h1>
+    <p>This page is protected by the SAP BTP application router using IAS authentication.</p>
+    <p><a href="/logout">Log out</a></p>
+    <h2>Authenticated user</h2>
+    <pre id="user">Loading user details…</pre>
+
+    <script>
+      fetch("/user-api/currentUser", {
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Unable to load user details");
+          }
+
+          return response.json();
+        })
+        .then(function (user) {
+          document.getElementById("user").textContent = JSON.stringify(user, null, 2);
+        })
+        .catch(function (error) {
+          document.getElementById("user").textContent = error.message;
+        });
+    </script>
+  </body>
+</html>
